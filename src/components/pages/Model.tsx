@@ -4,28 +4,21 @@ import styles from './styles.module.css';
 import { pumaArr, PumaItem } from "./Puma";
 
 type SneakersType = {
-    [key: string]: AdidasItem | PumaItem
+    [key: string]: AdidasItem[] | PumaItem[]
 };
 
-export const sneakers = {
-    'adidas': adidasArr,
-    'puma': pumaArr,
+export const sneakers: SneakersType = {
+    adidas: adidasArr,
+    puma: pumaArr,
 };
-
 
 export const Model = () => {
-    //const params = useParams();
-    const {model, id} = useParams();
+    const {company, id} = useParams<{company: string, id: string}>();
 
-    // let models;
-    // if (model) {
-    //     models = sneakers[model];
-    // }
-
-    const data = adidasArr.find(el => el.id === id);
-
+    const data = company ? sneakers[company].find(el => el.id === id)
+        : null;
     return (
-        (model) ? (<div className={styles.model}>
+        (data) ? (<div className={styles.model}>
                 <dl>
                     <dt>Model</dt>
                     <dd>{data.model}</dd>
@@ -40,5 +33,5 @@ export const Model = () => {
             </div>) :
             (<div>Error. There is no such model</div>)
     )
-        ;
+
 };

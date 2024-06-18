@@ -13,7 +13,8 @@ export const PATH = {
     ADIDAS: '/adidas',
     PUMA: '/puma',
     ABIBAS: '/abibas',
-    MODELID: '/:id'
+    MODELID: '/:id',
+    COMPANY: '/:company'
 } as const;
 
 function App() {
@@ -41,16 +42,17 @@ function App() {
                 </div>
                 <div className={styles.content}>
                     <Routes>
+                        <Route path={`${PATH.COMPANY}`} element={<Model/>}></Route>
                         <Route path={"/"} element={<Navigate to={PATH.ADIDAS}/>}></Route>
                         <Route path={PATH.ADIDAS} element={<Adidas/>}></Route>
                         <Route path={PATH.PUMA} element={<Puma/>}></Route>
                         <Route path={PATH.ABIBAS} element={<Abibas/>}></Route>
+                        <Route path={`${PATH.COMPANY}${PATH.MODELID}`} element={<Model/>}></Route>
 
                         {/*<Route path={"/page/error404"} element={<Error404/>}></Route>*/}
                         {/*<Route path={"/*"} element={<Navigate to={"/error404"}/>}></Route>*/}
-                        <Route path={"/*"} element={<Error404/>}></Route>
 
-                        <Route path={`/:model${PATH.MODELID}`} element={<Model/>}></Route>
+                        <Route path={"/*"} element={<Error404/>}></Route>
 
                     </Routes>
 
