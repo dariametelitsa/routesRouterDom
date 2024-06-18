@@ -29,7 +29,7 @@ export const Model = () => {
                     <dt>Price</dt>
                     <dd>{data.price}</dd>
                 </dl>
-                <img src={data.picture}/>
+                <img src={data.picture} alt={data.model}/>
             </div>) :
             (<div>Error. There is no such model</div>)
     )
