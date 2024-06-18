@@ -7,6 +7,7 @@ import { Error404 } from "./components/pages/Error404";
 import { Navigate, NavLink, Route, Routes } from "react-router-dom";
 import { S } from "./_styles";
 import { Model } from "./components/pages/Model";
+import { Prices } from "./components/pages/Prices";
 
 
 export const PATH = {
@@ -14,7 +15,8 @@ export const PATH = {
     PUMA: '/puma',
     ABIBAS: '/abibas',
     MODELID: '/:id',
-    COMPANY: '/:company'
+    COMPANY: '/:company',
+    PRISES: '/prices'
 } as const;
 
 function App() {
@@ -36,6 +38,8 @@ function App() {
                             </S.NawWrapper>
                             <S.NawWrapper>
                                 <NavLink to={PATH.ABIBAS}>Abibas</NavLink>
+                            </S.NawWrapper>                            <S.NawWrapper>
+                                <NavLink to={PATH.PRISES}>Prices</NavLink>
                             </S.NawWrapper>
                         </ul>
                     </nav>
@@ -47,6 +51,7 @@ function App() {
                         <Route path={PATH.ADIDAS} element={<Adidas/>}></Route>
                         <Route path={PATH.PUMA} element={<Puma/>}></Route>
                         <Route path={PATH.ABIBAS} element={<Abibas/>}></Route>
+                        <Route path={PATH.PRISES} element={<Prices/>}></Route>
                         <Route path={`${PATH.COMPANY}${PATH.MODELID}`} element={<Model/>}></Route>
 
                         {/*<Route path={"/page/error404"} element={<Error404/>}></Route>*/}
