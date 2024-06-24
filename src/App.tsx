@@ -4,20 +4,14 @@ import { Adidas } from "./components/pages/Adidas";
 import { Puma } from "./components/pages/Puma";
 import { Abibas } from "./components/pages/Abibas";
 import { Error404 } from "./components/pages/Error404";
-import { Navigate, NavLink, Route, Routes } from "react-router-dom";
+import { Navigate, NavLink, Outlet, Route, Routes } from "react-router-dom";
 import { S } from "./_styles";
 import { Model } from "./components/pages/Model";
 import { Prices } from "./components/pages/Prices";
+import { PATH } from "./routes/routers";
 
 
-export const PATH = {
-    ADIDAS: '/adidas',
-    PUMA: '/puma',
-    ABIBAS: '/abibas',
-    MODELID: '/:id',
-    COMPANY: '/:company',
-    PRISES: '/prices'
-} as const;
+
 
 function App() {
     return (
@@ -45,21 +39,22 @@ function App() {
                     </nav>
                 </div>
                 <div className={styles.content}>
-                    <Routes>
-                        <Route path={`${PATH.COMPANY}`} element={<Model/>}></Route>
-                        <Route path={"/"} element={<Navigate to={PATH.ADIDAS}/>}></Route>
-                        <Route path={PATH.ADIDAS} element={<Adidas/>}></Route>
-                        <Route path={PATH.PUMA} element={<Puma/>}></Route>
-                        <Route path={PATH.ABIBAS} element={<Abibas/>}></Route>
-                        <Route path={PATH.PRISES} element={<Prices/>}></Route>
-                        <Route path={`${PATH.COMPANY}${PATH.MODELID}`} element={<Model/>}></Route>
+                    <Outlet/>
+                    {/*<Routes>*/}
+                    {/*    <Route path={`${PATH.COMPANY}`} element={<Model/>}></Route>*/}
+                    {/*    <Route path={"/"} element={<Navigate to={PATH.ADIDAS}/>}></Route>*/}
+                    {/*    <Route path={PATH.ADIDAS} element={<Adidas/>}></Route>*/}
+                    {/*    <Route path={PATH.PUMA} element={<Puma/>}></Route>*/}
+                    {/*    <Route path={PATH.ABIBAS} element={<Abibas/>}></Route>*/}
+                    {/*    <Route path={PATH.PRISES} element={<Prices/>}></Route>*/}
+                    {/*    <Route path={`${PATH.COMPANY}${PATH.MODELID}`} element={<Model/>}></Route>*/}
 
-                        {/*<Route path={"/page/error404"} element={<Error404/>}></Route>*/}
-                        {/*<Route path={"/*"} element={<Navigate to={"/error404"}/>}></Route>*/}
+                    {/*    /!*<Route path={"/page/error404"} element={<Error404/>}></Route>*!/*/}
+                    {/*    /!*<Route path={"/*"} element={<Navigate to={"/error404"}/>}></Route>*!/*/}
 
-                        <Route path={"/*"} element={<Error404/>}></Route>
+                    {/*    <Route path={"/*"} element={<Error404/>}></Route>*/}
 
-                    </Routes>
+                    {/*</Routes>*/}
 
                 </div>
             </div>

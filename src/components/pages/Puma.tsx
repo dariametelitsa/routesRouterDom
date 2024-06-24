@@ -1,10 +1,10 @@
 import React from 'react';
 import styles from "./styles.module.css";
 import { Link } from "react-router-dom";
-import { PATH } from "../../App";
 import puma1 from './../../assets/puma/73034690299.jpg'
 import puma2 from './../../assets/puma/orig.webp'
 import puma3 from './../../assets/puma/fu0vjppua3xvgr5tsy8ufi09aiy9yirg.jpg'
+import { PATH } from "../../routes/routers";
 
 export type PumaItem = {
     id: string
