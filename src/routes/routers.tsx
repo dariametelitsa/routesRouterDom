@@ -1,12 +1,15 @@
-import { createBrowserRouter } from "react-router-dom";
+import { createBrowserRouter, Navigate, NavLink } from "react-router-dom";
 import { Adidas } from "../components/pages/Adidas";
 import { Error404 } from "../components/pages/Error404";
 import { Puma } from "../components/pages/Puma";
 import { Abibas } from "../components/pages/Abibas";
 import App from "../App";
 import { Model } from "../components/pages/Model";
-import { lazy, Suspense } from 'react';
+import { Suspense } from 'react';
 import { Prices } from "../components/pages/Prices";
+import { ProtectedPage } from "../components/pages/ProtectedPage";
+import { ProtectedRoute } from "./ProtectedRoute";
+import { Login } from "../components/pages/Login";
 
 export const PATH = {
     ADIDAS: '/adidas',
@@ -14,6 +17,9 @@ export const PATH = {
     ABIBAS: '/abibas',
     SNEAKERSMODEL: '/:company/:id',
     PRISES: '/prices',
+    PROTECTED: '/hidden',
+    ERROR: '/404',
+    LOGIN: '/login'
 } as const;
 
 // const Puma = lazy(() => import "../components/pages/Puma"))
@@ -23,8 +29,12 @@ export const router = createBrowserRouter([
     {
         path: '/',
         element: <App/>,
-        errorElement: <Error404/>,
+        errorElement: <Navigate to={PATH.ERROR}/>,
         children: [
+            {
+                path: PATH.LOGIN,
+                element: <Login/>
+            },
             {
                 path: PATH.ADIDAS,
                 element: <Adidas/>
@@ -48,7 +58,17 @@ export const router = createBrowserRouter([
             {
                 path: PATH.PRISES,
                 element: <Prices/>
-            }
+            },
+            {
+                path: PATH.PROTECTED,
+                element: <ProtectedRoute>
+                    <ProtectedPage/>
+                </ProtectedRoute>
+            },
+            {
+                path: PATH.ERROR,
+                element: <Error404/>
+            },
         ]
     },
 
