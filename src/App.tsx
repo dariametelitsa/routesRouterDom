@@ -41,7 +41,7 @@ function App() {
                 </div>
                 <div className={styles.content}>
                     <ButtonBack/>
-                    <button onClick={navigateHandler} className={}>Back</button>
+                    <button onClick={navigateHandler}>Back</button>
                     <Outlet/>
                     {/*<Routes>*/}
                     {/*    <Route path={`${PATH.COMPANY}`} element={<Model/>}></Route>*/}
