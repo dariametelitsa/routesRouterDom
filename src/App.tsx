@@ -1,11 +1,16 @@
 import React from 'react';
 import styles from "./components/Site.module.css";
-import { NavLink, Outlet } from "react-router-dom";
+import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import { S } from "./_styles";
 import { PATH } from "./routes/routers";
+import { ButtonBack } from "./components/buttonBack/ButtonBack";
 
 
 function App() {
+    const navigate = useNavigate();
+    const navigateHandler = () => {
+        navigate(-1);
+    }
     return (
         <div>
             <div className={styles.header}><h1>HEADER</h1></div>
@@ -35,6 +40,8 @@ function App() {
                     </nav>
                 </div>
                 <div className={styles.content}>
+                    <ButtonBack/>
+                    <button onClick={navigateHandler} className={}>Back</button>
                     <Outlet/>
                     {/*<Routes>*/}
                     {/*    <Route path={`${PATH.COMPANY}`} element={<Model/>}></Route>*/}
